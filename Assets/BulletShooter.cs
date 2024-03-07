@@ -11,6 +11,9 @@ public class BulletShooter : MonoBehaviour
     private float bulletSpeed;
 
     [SerializeField]
+    private float bulletDamage;
+
+    [SerializeField]
     private Vector3 defaultDir;
 
     public void Shoot()
@@ -19,6 +22,7 @@ public class BulletShooter : MonoBehaviour
         Vector3 dir = bullet.transform.rotation * this.defaultDir;
         Vector3 velocity = dir * this.bulletSpeed;
         bullet.SetVelocity(velocity);
+        bullet.SetDamage(this.bulletDamage);
                 
     }
 
