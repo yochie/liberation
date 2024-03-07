@@ -11,15 +11,17 @@ public class Bullet : MonoBehaviour
 
     private float ellapsedSeconds;
 
+    private float damage;
+
     private void Start()
     {
         this.ellapsedSeconds = 0;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        this.transform.position += this.velocity;
-        this.ellapsedSeconds += Time.deltaTime;
+        this.transform.position += this.velocity * Time.fixedDeltaTime;
+        this.ellapsedSeconds += Time.fixedDeltaTime;
         if (ellapsedSeconds > durationSeconds)
             Destroy(this.gameObject);
     }
@@ -29,9 +31,18 @@ public class Bullet : MonoBehaviour
         this.velocity = v;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void SetDamage(float damage)
+    {
+        this.damage = damage;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Enemy hit");
-        Destroy(collision.gameObject);
+        Vector2 hitPos = other.ClosestPoint(this.transform.position);
+        var hitable = other.GetComponent<Hitable>();
+        if (hitable != null)
+            hitable.TakeHit(this.damage, hitPos);
+        //Destroy(other.gameObject);
     }
 }

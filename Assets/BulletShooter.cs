@@ -18,7 +18,7 @@ public class BulletShooter : MonoBehaviour
         Bullet bullet = Instantiate(this.bulletPrefab, this.transform.position, this.transform.rotation);
         Vector3 dir = bullet.transform.rotation * this.defaultDir;
         Vector3 velocity = dir * this.bulletSpeed;
-        bullet.SetVelocity(dir);
+        bullet.SetVelocity(velocity);
                 
     }
 

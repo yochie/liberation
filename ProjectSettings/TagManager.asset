@@ -13,9 +13,9 @@ TagManager:
   - UI
   - Bullets
   - Enemies
-  - 
-  - 
-  - 
+  - Player
+  - Hitbox
+  - MapEdge
   - 
   - 
   - 
@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 1623165759
+    locked: 0
+  - name: Enemies
+    uniqueID: 3869004683
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

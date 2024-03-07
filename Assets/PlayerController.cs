@@ -14,10 +14,13 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     [SerializeField]
-    private float speed;
+    private BulletShooter shooter;
 
     [SerializeField]
-    private BulletShooter shooter;
+    private Rigidbody2D rb;
+
+    [SerializeField]
+    private Mover mover;
 
     private float facingDir;
 
@@ -30,7 +33,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        this.transform.position += movement * this.speed * Time.fixedDeltaTime;
+        //this.transform.position += movement * this.speed * Time.fixedDeltaTime;
+        this.mover.MoveInDir(this.movement);
     }
 
     private void Update()
