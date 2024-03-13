@@ -37,7 +37,10 @@ public class Hitable : MonoBehaviour
     private bool isPlayer;
 
     [SerializeField]
-    private float deathDelaySeconds;
+    private PlayerController forPlayer;
+
+    [SerializeField]
+    private float EnemyDespawnDelay;
 
     [SerializeField]
     private int addsToScoreOnDeath;
@@ -72,28 +75,35 @@ public class Hitable : MonoBehaviour
 
         if(this.currentHP <= 0)
         {
-            this.canBeHit = false;
-            if(this.addsToScoreOnDeath > 0)
-            {
-                GameController.Singleton.AddToScore(this.addsToScoreOnDeath);
-            }
-            this.StartCoroutine(DieCoroutine());
+            this.Die();
+
         }
     }
 
-    private IEnumerator DieCoroutine()
+    private void Die()
     {
-
-        Debug.Log("die");        
-        yield return new WaitForSeconds(this.deathDelaySeconds);
-        if (this.isPlayer)
+        this.canBeHit = false;
+        if (this.addsToScoreOnDeath > 0)
         {
-            GameController.Singleton.EndGame();
-        } else
-        {
-            //TODO: fade out before destruction
-            Destroy(this.gameObject);
+            GameController.Singleton.AddToScore(this.addsToScoreOnDeath);
         }
+        if (this.isPlayer && this.forPlayer != null)
+        {
+            this.forPlayer.Die();
+        }
+        else
+        {
+            this.StartCoroutine(DespawnCoroutine());
+        }
+    }
+
+    private IEnumerator DespawnCoroutine()
+    {
+        Debug.Log("Enemy killed");        
+        yield return new WaitForSeconds(this.EnemyDespawnDelay);
+
+        //TODO: fade out before destruction
+        Destroy(this.gameObject);        
     }
 
     internal float GetMaxHP()

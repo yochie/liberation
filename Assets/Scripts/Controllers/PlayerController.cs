@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,9 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     private Animator animator;
+
+    [SerializeField]
+    private float deathAnimationDuration;
     
     [SerializeField]
     private Animator gunAnimator;
@@ -14,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     [SerializeField]
-    private BulletShooter shooter;
+    private BulletShooter gun;
 
     [SerializeField]
     private Rigidbody2D rb;
@@ -26,9 +30,12 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 movementDirection;
 
+    private bool acceptInput; 
+
     private void Start()
     {
         this.facingDir = -1;
+        this.acceptInput = true;
     }
 
     private void FixedUpdate()
@@ -39,6 +46,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if(!acceptInput)
+        {
+            this.movementDirection = Vector3.zero;
+            return;
+        }
+
         Vector3 newMovementDirection = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0).normalized;
         this.movementDirection = newMovementDirection;
 
@@ -57,7 +70,7 @@ public class PlayerController : MonoBehaviour
         if (shooting)
         {
             this.gunAnimator.SetTrigger("shoot");
-            this.shooter.Shoot();
+            this.gun.Shoot();
         }
 
         bool dashing = Input.GetKeyDown("space");
@@ -76,5 +89,19 @@ public class PlayerController : MonoBehaviour
             this.spriteRenderer.flipX = !this.spriteRenderer.flipX;
         this.facingDir = dir;
 
+    }
+
+    internal void Die()
+    {
+        this.acceptInput = false;
+        this.gun.gameObject.SetActive(false);
+        this.animator.SetTrigger("die");
+        this.StartCoroutine(this.WaitForDeathAnimationCoroutine());
+    }
+
+    private IEnumerator WaitForDeathAnimationCoroutine()
+    {
+        yield return new WaitForSeconds(this.deathAnimationDuration);
+        GameController.Singleton.EndGame();
     }
 }

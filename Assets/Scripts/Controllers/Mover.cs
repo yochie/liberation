@@ -17,6 +17,9 @@ public class Mover : MonoBehaviour
     [SerializeField]
     private Rigidbody2D rb;
 
+    [SerializeField]
+    private Animator animator;
+
     //disabled by knockbacker
     private bool inControl;
 
@@ -41,11 +44,13 @@ public class Mover : MonoBehaviour
             {                
                 this.rb.velocity = this.dashingDirection * this.dashSpeed;
                 this.dashTimeRemaining -= Time.fixedDeltaTime;
+                if(dashTimeRemaining <= 0)
+                    this.animator.SetBool("dashing", false);
             }
             else
             {
                 this.rb.velocity = this.moveDirection * this.moveSpeed;
-            }            
+            }
         }
     }
 
@@ -56,6 +61,7 @@ public class Mover : MonoBehaviour
 
         this.dashingDirection = direction;
         this.dashTimeRemaining = this.dashDuration;
+        this.animator.SetBool("dashing", true);
     }
 
     internal void SetMovementDirection(Vector2 direction)

@@ -30686,9 +30686,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1164162991}
+  deathAnimationDuration: 4
   gunAnimator: {fileID: 178855625}
   spriteRenderer: {fileID: 1164162993}
-  shooter: {fileID: 2014033412}
+  gun: {fileID: 2014033412}
   rb: {fileID: 1164162999}
   mover: {fileID: 1164163000}
 --- !u!114 &1164162995
@@ -30752,7 +30753,8 @@ MonoBehaviour:
   knockbacker: {fileID: 0}
   kbDurationSeconds: 0
   isPlayer: 1
-  deathDelaySeconds: 1
+  forPlayer: {fileID: 1164162994}
+  EnemyDespawnDelay: 0
   addsToScoreOnDeath: 0
 --- !u!61 &1164162998
 BoxCollider2D:
@@ -30842,6 +30844,7 @@ MonoBehaviour:
   dashSpeed: 25
   dashDuration: 0.25
   rb: {fileID: 1164162999}
+  animator: {fileID: 1164162991}
 --- !u!1 &1190265174
 GameObject:
   m_ObjectHideFlags: 0
