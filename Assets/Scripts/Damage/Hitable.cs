@@ -39,6 +39,9 @@ public class Hitable : MonoBehaviour
     [SerializeField]
     private float deathDelaySeconds;
 
+    [SerializeField]
+    private int addsToScoreOnDeath;
+
     private float currentHP;
 
     private bool canBeHit;
@@ -70,6 +73,10 @@ public class Hitable : MonoBehaviour
         if(this.currentHP <= 0)
         {
             this.canBeHit = false;
+            if(this.addsToScoreOnDeath > 0)
+            {
+                GameController.Singleton.AddToScore(this.addsToScoreOnDeath);
+            }
             this.StartCoroutine(DieCoroutine());
         }
     }

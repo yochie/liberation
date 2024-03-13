@@ -9,21 +9,25 @@ public class UIController : MonoBehaviour
     private HealthDisplay healthDisplay;
 
     [SerializeField]
-    private PlayerController player;
-
-    [SerializeField]
     private Hitable playerHitable;
 
     [SerializeField]
     private EndScreen endScreen;
 
+    [SerializeField]
+    private ScoreDisplay scoreDisplay;
+
+    [SerializeField]
+    private Scorer scorer;
+
     private void Update()
     {
         this.healthDisplay.Set(this.playerHitable.GetCurrentHP(), this.playerHitable.GetMaxHP());
+        this.scoreDisplay.Set(this.scorer.GetScore());
     }
 
-    internal void DisplayEndScreen()
+    internal void DisplayEndScreen(int score)
     {
-        this.endScreen.Display();
+        this.endScreen.Display(score);
     }
 }

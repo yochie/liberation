@@ -292,6 +292,8 @@ MonoBehaviour:
   kbDurationSeconds: 0.25
   isPlayer: 0
   deathDelaySeconds: 0.25
+  addsToScoreOnDeath: 1
+  scorer: {fileID: 0}
 --- !u!114 &1732663413735083433
 MonoBehaviour:
   m_ObjectHideFlags: 0
