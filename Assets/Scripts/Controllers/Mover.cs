@@ -14,6 +14,10 @@ public class Mover : MonoBehaviour
     [SerializeField]
     private float dashDuration;
 
+    //starts at end of dash
+    [SerializeField]
+    private float dashCooldownDuration;
+
     [SerializeField]
     private Rigidbody2D rb;
 
@@ -25,6 +29,7 @@ public class Mover : MonoBehaviour
 
     private Vector2  dashingDirection;
     private float dashTimeRemaining;
+    private float dashCooldownRemaining;
 
     private Vector2 moveDirection;
 
@@ -40,23 +45,27 @@ public class Mover : MonoBehaviour
     {
         if (this.inControl)
         {
-            if (dashTimeRemaining > 0)
+            if (dashTimeRemaining > 0 && this.dashCooldownRemaining <= 0)
             {                
                 this.rb.velocity = this.dashingDirection * this.dashSpeed;
                 this.dashTimeRemaining -= Time.fixedDeltaTime;
-                if(dashTimeRemaining <= 0)
+                if (dashTimeRemaining <= 0)
+                {
                     this.animator.SetBool("dashing", false);
+                    this.dashCooldownRemaining = this.dashCooldownDuration;
+                }
             }
             else
             {
                 this.rb.velocity = this.moveDirection * this.moveSpeed;
+                this.dashCooldownRemaining -= Time.fixedDeltaTime;
             }
         }
     }
 
     public void Dash(Vector2 direction)
     {
-        if (direction.magnitude == 0)
+        if (direction.magnitude == 0 || this.dashCooldownRemaining > 0)
             return;
 
         this.dashingDirection = direction;
