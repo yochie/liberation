@@ -196,7 +196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 562986bd1ebf7b34b89f373f4957ee0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   mover: {fileID: 8487929463818172021}
 --- !u!61 &5261331410650307967
 BoxCollider2D:
@@ -284,14 +283,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 20
   screenShaker: {fileID: 0}
-  shakeScreenWhenHit: 1
-  shakeDurationSeconds: 0.5
-  shakeAmplitude: 1
-  shakeFrequency: 1
+  shakeScreenWhenHit: 0
+  shakeDurationSeconds: 0
+  shakeAmplitude: 0
+  shakeFrequency: 0
   spriteFlasher: {fileID: 1732663413735083433}
   knockbacker: {fileID: 732935235716797177}
   kbDurationSeconds: 0.25
   isPlayer: 0
+  deathDelaySeconds: 0.25
 --- !u!114 &1732663413735083433
 MonoBehaviour:
   m_ObjectHideFlags: 0

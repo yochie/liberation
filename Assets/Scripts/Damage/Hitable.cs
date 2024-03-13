@@ -36,6 +36,9 @@ public class Hitable : MonoBehaviour
     [SerializeField]
     private bool isPlayer;
 
+    [SerializeField]
+    private float deathDelaySeconds;
+
     private float currentHP;
 
     private bool canBeHit;
@@ -74,9 +77,8 @@ public class Hitable : MonoBehaviour
     private IEnumerator DieCoroutine()
     {
 
-        Debug.Log("gie");
-        float despawnDelay = 1f;
-        yield return new WaitForSeconds(despawnDelay);
+        Debug.Log("die");        
+        yield return new WaitForSeconds(this.deathDelaySeconds);
         if (this.isPlayer)
         {
             GameController.Singleton.EndGame();

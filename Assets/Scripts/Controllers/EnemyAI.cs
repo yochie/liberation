@@ -5,10 +5,14 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField]
+    private Mover mover;
+
     private Transform target;
 
-    [SerializeField]
-    private Mover mover;
+    private void Start()
+    {
+        this.target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 
     // Update is called once per frame
     void FixedUpdate()
