@@ -30568,14 +30568,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1164162992}
-  - component: {fileID: 1164162991}
-  - component: {fileID: 1164162993}
   - component: {fileID: 1164162994}
   - component: {fileID: 1164162997}
+  - component: {fileID: 1164163000}
   - component: {fileID: 1164162995}
   - component: {fileID: 1164162998}
   - component: {fileID: 1164162999}
-  - component: {fileID: 1164163000}
+  - component: {fileID: 1164162993}
+  - component: {fileID: 1164162991}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -30839,6 +30839,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  dashSpeed: 25
+  dashDuration: 0.25
   rb: {fileID: 1164162999}
 --- !u!1 &1190265174
 GameObject:

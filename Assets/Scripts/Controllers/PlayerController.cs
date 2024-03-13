@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private float facingDir;
 
-    private Vector3 movement;
+    private Vector3 movementDirection;
 
     private void Start()
     {
@@ -34,27 +34,36 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         //this.transform.position += movement * this.speed * Time.fixedDeltaTime;
-        this.mover.MoveInDir(this.movement);
+        this.mover.SetMovementDirection(this.movementDirection);
     }
 
     private void Update()
     {
-        Vector3 newMovement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0).normalized;
-        this.animator.SetBool("running", this.movement.magnitude > 0);
-        float movingInDir;
-        if (newMovement.x == 0)
-            movingInDir = 0;
-        else
-            movingInDir = newMovement.x > 0 ? 1 : -1;
-        this.FaceDir(movingInDir);
+        Vector3 newMovementDirection = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0).normalized;
+        this.movementDirection = newMovementDirection;
 
-        this.movement = newMovement;
+        this.animator.SetBool("running", this.movementDirection.magnitude > 0);
+
+        //update sprite direction
+        float facingDirection;
+        if (newMovementDirection.x == 0)
+            facingDirection = 0;
+        else
+            facingDirection = newMovementDirection.x > 0 ? 1 : -1;
+        this.FaceDir(facingDirection);
+
 
         bool shooting = Input.GetMouseButtonDown(0);
         if (shooting)
         {
             this.gunAnimator.SetTrigger("shoot");
             this.shooter.Shoot();
+        }
+
+        bool dashing = Input.GetKeyDown("space");
+        if (dashing)
+        {
+            this.mover.Dash(this.movementDirection);
         }
     }
 

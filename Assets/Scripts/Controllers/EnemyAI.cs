@@ -18,6 +18,6 @@ public class EnemyAI : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 targetDir = (target.position - this.transform.position).normalized;
-        this.mover.MoveInDir(targetDir);
+        this.mover.SetMovementDirection(targetDir);
     }
 }
