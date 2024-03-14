@@ -8,21 +8,37 @@ public class EnemySpawner : MonoBehaviour
     private BoxCollider2D spawnZone;
 
     [SerializeField]
-    private float spawnDelaySeconds;
+    private float startingSpawnRatePerSecond;
 
     [SerializeField]
-    private GameObject toSpawn;    
+    private GameObject toSpawn;
+
+    [SerializeField]
+    private float spawnRateIncrementLapse;
+
+    [SerializeField]
+    private float spawnRateIncrements;
+
+    [SerializeField]
+    private float spawnRateCap;
 
     private float ellapsedSinceLastSpawn;
+    private float ellapsedSinceLastSpawnRateIncrement;
+
+    private float currentSpawnRate;
 
     private void Start()
     {
         ellapsedSinceLastSpawn = 0;
+        ellapsedSinceLastSpawnRateIncrement = 0;
+
+        this.currentSpawnRate = startingSpawnRatePerSecond;
     }
 
     private void Update()
     {
-        if(ellapsedSinceLastSpawn > spawnDelaySeconds)
+        //spawn at current rate
+        if(ellapsedSinceLastSpawn > 1f / currentSpawnRate)
         {
             this.Spawn();
             this.ellapsedSinceLastSpawn = 0;
@@ -30,6 +46,17 @@ public class EnemySpawner : MonoBehaviour
         else
         {
             this.ellapsedSinceLastSpawn += Time.deltaTime;
+        }
+
+        //increment spawn rate
+        if (ellapsedSinceLastSpawnRateIncrement > spawnRateIncrementLapse)
+        {
+            this.currentSpawnRate++;
+            this.ellapsedSinceLastSpawnRateIncrement = 0;
+        }
+        else
+        {
+            this.ellapsedSinceLastSpawnRateIncrement += Time.deltaTime;
         }
     }
 

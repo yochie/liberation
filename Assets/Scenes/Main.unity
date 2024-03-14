@@ -30564,8 +30564,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnZone: {fileID: 1190265176}
-  spawnDelaySeconds: 0.5
+  startingSpawnRatePerSecond: 2
   toSpawn: {fileID: 3384864459128323502, guid: 5aa7d1a4e45ece54ba468273ec367e6e, type: 3}
+  spawnRateIncrementLapse: 30
+  spawnRateIncrements: 1
+  spawnRateCap: 30
 --- !u!1 &1260269102
 GameObject:
   m_ObjectHideFlags: 0
