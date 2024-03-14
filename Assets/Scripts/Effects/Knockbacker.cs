@@ -38,9 +38,9 @@ public class Knockbacker : MonoBehaviour
     }
     internal void Trigger(Vector2 hitFromPos, float durationSeconds)
     {
-        Debug.Log("kb");
-        Debug.Log(hitFromPos);
-        Debug.Log(durationSeconds);
+        //Debug.Log("kb");
+        //Debug.Log(hitFromPos);
+        //Debug.Log(durationSeconds);
         this.disablesControlForMover.SetControl(inControl: false);
         this.kbVelocity = ((Vector2) this.transform.position - hitFromPos) * this.kbSpeed;
         this.remainingSeconds = durationSeconds;

@@ -45,24 +45,36 @@ public class Hitable : MonoBehaviour
     [SerializeField]
     private int addsToScoreOnDeath;
 
+    [SerializeField]
+    private GameObject dropsOnDeath;
+
+    [Range(0f, 1f)]
+    [SerializeField]
+    private float dropRate;
+
     private float currentHP;
 
-    private bool canBeHit;
+    private bool active;
 
     private void Start()
     {
         this.currentHP = this.maxHP;
-        this.canBeHit = true;
+        this.active = true;
+    }
+
+    private void SetHP(float val)
+    {
+        this.currentHP = Mathf.Clamp(val, 0, this.maxHP);
     }
 
     public void TakeHit(float damage, Vector2 hitFromPos)
     {
         Debug.Log("takehit");
 
-        if (!this.canBeHit)
+        if (!this.active)
             return;
 
-        this.currentHP = Mathf.Clamp(this.currentHP - damage, 0, this.maxHP);
+        this.SetHP(this.currentHP - damage);
 
         if (this.spriteFlasher != null)
             this.spriteFlasher.Trigger();
@@ -80,13 +92,32 @@ public class Hitable : MonoBehaviour
         }
     }
 
+    internal void Heal(float healAmount)
+    {
+        Debug.Log("healed");
+
+        if (!this.active)
+            return;
+
+        this.SetHP(this.currentHP + healAmount);
+    }
+
     private void Die()
     {
-        this.canBeHit = false;
+        this.active = false;
         if (this.addsToScoreOnDeath > 0)
         {
             GameController.Singleton.AddToScore(this.addsToScoreOnDeath);
         }
+
+        if (this.dropsOnDeath != null)
+        {
+            if(UnityEngine.Random.Range(0, 100) < (int) (this.dropRate * 100))
+            {
+                Instantiate(this.dropsOnDeath, this.transform.position, Quaternion.identity);
+            }
+        }
+
         if (this.isPlayer && this.forPlayer != null)
         {
             this.forPlayer.Die();

@@ -294,6 +294,8 @@ MonoBehaviour:
   forPlayer: {fileID: 0}
   EnemyDespawnDelay: 0.25
   addsToScoreOnDeath: 1
+  dropsOnDeath: {fileID: 2903998546049184524, guid: 5797ff14d3516314b96aab072e94d6a3, type: 3}
+  dropRate: 0.03
 --- !u!114 &1732663413735083433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,4 +365,6 @@ MonoBehaviour:
   moveSpeed: 5
   dashSpeed: 0
   dashDuration: 0
+  dashCooldownDuration: 0
   rb: {fileID: 20749293430528594}
+  animator: {fileID: 0}
