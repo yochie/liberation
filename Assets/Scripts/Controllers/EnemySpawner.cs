@@ -8,6 +8,9 @@ public class EnemySpawner : MonoBehaviour
     private BoxCollider2D spawnZone;
 
     [SerializeField]
+    private float minDistanceFromPlayer;
+
+    [SerializeField]
     private float spawnBatchAfterDelay;
 
     [SerializeField]
@@ -30,12 +33,16 @@ public class EnemySpawner : MonoBehaviour
 
     private float currentSpawnRate;
 
+    private Transform playerTransform;
+
     private void Start()
     {
         ellapsedSinceLastSpawn = 0;
         ellapsedSinceLastSpawnRateIncrement = 0;
 
         this.currentSpawnRate = startingSpawnRatePerSecond;
+        this.playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
     }
 
     private void Update()
@@ -70,7 +77,11 @@ public class EnemySpawner : MonoBehaviour
 
     private void Spawn()
     {
-        Vector3 spawnPosition = this.RandomPositionOnCollider(this.spawnZone);
+        Vector3 playerPosition = this.playerTransform.position;
+        Vector3 spawnPosition;
+        do {
+            spawnPosition = this.RandomPositionOnCollider(this.spawnZone);
+        } while ((spawnPosition - playerPosition).magnitude < this.minDistanceFromPlayer);
         Instantiate(this.toSpawn, spawnPosition, Quaternion.identity, this.transform);
     }
 

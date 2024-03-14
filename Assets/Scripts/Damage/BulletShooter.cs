@@ -21,7 +21,8 @@ public class BulletShooter : MonoBehaviour
 
     public void Shoot()
     {
-        AudioManager.Singleton.PlaySoundEffect(this.gunshotSound);
+        if(AudioManager.Singleton != null)
+            AudioManager.Singleton.PlaySoundEffect(this.gunshotSound);
 
         Bullet bullet = Instantiate(this.bulletPrefab, this.transform.position, this.transform.rotation);
         Vector3 dir = bullet.transform.rotation * this.defaultDir;

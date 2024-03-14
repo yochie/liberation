@@ -30267,7 +30267,7 @@ Transform:
   m_GameObject: {fileID: 751049038}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.1, y: 4.3, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -30503,7 +30503,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.7, y: 0.2}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!61 &1190265176
@@ -30564,6 +30564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnZone: {fileID: 1190265176}
+  minDistanceFromPlayer: 5
   spawnBatchAfterDelay: 1
   startingSpawnRatePerSecond: 2
   toSpawn: {fileID: 3384864459128323502, guid: 5aa7d1a4e45ece54ba468273ec367e6e, type: 3}
@@ -30871,7 +30872,7 @@ Transform:
   m_GameObject: {fileID: 1634854190}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.1, y: 4.3, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -31687,11 +31688,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2236897237447509641, guid: 09506ad24e6ae6648828718c87c4a7b0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2236897237447509641, guid: 09506ad24e6ae6648828718c87c4a7b0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2236897237447509641, guid: 09506ad24e6ae6648828718c87c4a7b0, type: 3}
       propertyPath: m_LocalPosition.z
