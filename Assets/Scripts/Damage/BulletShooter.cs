@@ -29,6 +29,4 @@ public class BulletShooter : MonoBehaviour
         bullet.SetVelocity(velocity);
         bullet.SetDamage(this.bulletDamage);
     }
-
-
 }

@@ -30564,6 +30564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnZone: {fileID: 1190265176}
+  spawnBatchAfterDelay: 1
   startingSpawnRatePerSecond: 2
   toSpawn: {fileID: 3384864459128323502, guid: 5aa7d1a4e45ece54ba468273ec367e6e, type: 3}
   spawnRateIncrementLapse: 30
