@@ -39,6 +39,11 @@ public class GameController : MonoBehaviour
         Application.Quit();
     }
 
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadSceneAsync("Menu");
+    }
+
     internal void AddToScore(int toAdd)
     {
         this.scorer.AddToScore(toAdd);

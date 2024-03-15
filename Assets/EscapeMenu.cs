@@ -27,10 +27,20 @@ public class EscapeMenu : MonoBehaviour
         }
     }
 
-    internal void Toggle()
+    public void Toggle()
     {        
         this.opened = !this.opened;
         this.content.SetActive(this.opened);
         PauseController.PauseGame(this.opened);
+    }
+
+    public void ReturnToMainMenu()
+    {
+        this.gameController.ReturnToMainMenu();
+    }
+
+    public void ExitGame()
+    {
+        this.gameController.ExitGame();
     }
 }

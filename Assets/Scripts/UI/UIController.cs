@@ -40,9 +40,4 @@ public class UIController : MonoBehaviour
     {
         this.endScreen.Display(score);
     }
-
-    internal void ToggleEscapeMenu()
-    {
-        this.escapeMenu.Toggle();
-    }
 }
