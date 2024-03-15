@@ -279,10 +279,10 @@ MonoBehaviour:
   shakeFrequency: 0
   spriteFlasher: {fileID: 1732663413735083433}
   knockbacker: {fileID: 732935235716797177}
-  kbDurationSeconds: 0.25
+  kbDurationSeconds: 0.35
   isPlayer: 0
   forPlayer: {fileID: 0}
-  EnemyDespawnDelay: 0.25
+  EnemyDespawnDelay: 0.1
   addsToScoreOnDeath: 1
   dropsOnDeath: {fileID: 2903998546049184524, guid: 5797ff14d3516314b96aab072e94d6a3, type: 3}
   dropRate: 0.03
@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d9304a4e8c10e40b752f42c98fa2da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kbSpeed: 10
+  kbSpeed: 15
   rb: {fileID: 20749293430528594}
   disablesControlForMover: {fileID: 8487929463818172021}
 --- !u!114 &8487929463818172021
