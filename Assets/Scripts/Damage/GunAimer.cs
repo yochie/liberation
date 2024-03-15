@@ -12,20 +12,15 @@ public class GunAimer : MonoBehaviour
 
     public Vector3 Orientation { get {
             return this.transform.position - this.rotationCenter.position;
-
         }
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (PauseController.GameIsPaused)
+            return;
+
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPos.z = 0;
         Vector3 currentlyPointingAt = this.Orientation;

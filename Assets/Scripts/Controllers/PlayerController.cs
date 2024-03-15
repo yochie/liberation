@@ -30,12 +30,13 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 movementDirection;
 
-    private bool acceptInput; 
+    private bool dead;
+    private bool paused;
 
     private void Start()
     {
         this.facingDir = -1;
-        this.acceptInput = true;
+        this.dead = true;
     }
 
     private void FixedUpdate()
@@ -46,7 +47,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(!acceptInput)
+        if(!this.dead || PauseController.GameIsPaused)
         {
             this.movementDirection = Vector3.zero;
             return;
@@ -92,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
     internal void Die()
     {
-        this.acceptInput = false;
+        this.dead = false;
         this.gun.gameObject.SetActive(false);
         this.animator.SetTrigger("die");
         this.StartCoroutine(this.WaitForDeathAnimationCoroutine());

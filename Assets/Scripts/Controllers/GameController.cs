@@ -14,6 +14,9 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private Scorer scorer;
 
+    [SerializeField]
+    private PlayerController playerController;
+
     private void Awake()
     {
         GameController.Singleton = this;
@@ -21,14 +24,13 @@ public class GameController : MonoBehaviour
 
     public void EndGame()
     {
-        Time.timeScale = 0;
+        PauseController.PauseGame(true);
         this.ui.DisplayEndScreen(this.scorer.GetScore());
     }
 
     //Called by button
     public void RestartGame()
     {
-        Time.timeScale = 1;
         SceneManager.LoadScene("Main");
     }
 

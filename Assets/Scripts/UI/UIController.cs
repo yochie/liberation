@@ -26,6 +26,9 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private Scorer scorer;
 
+    [SerializeField]
+    private EscapeMenu escapeMenu;
+
     private void Update()
     {
         this.healthDisplay.Set(this.playerHitable.GetCurrentHP(), this.playerHitable.GetMaxHP());
@@ -36,5 +39,10 @@ public class UIController : MonoBehaviour
     internal void DisplayEndScreen(int score)
     {
         this.endScreen.Display(score);
+    }
+
+    internal void ToggleEscapeMenu()
+    {
+        this.escapeMenu.Toggle();
     }
 }
