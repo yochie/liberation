@@ -36,8 +36,8 @@ public class UIController : MonoBehaviour
         this.scoreDisplay.Set(this.scorer.GetScore());
     }
 
-    internal void DisplayEndScreen(int score)
+    internal void DisplayEndScreen(int score, int highScore, bool newHigh)
     {
-        this.endScreen.Display(score);
+        this.endScreen.Display(score, highScore, newHigh);
     }
 }

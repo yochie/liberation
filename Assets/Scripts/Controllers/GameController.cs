@@ -17,6 +17,9 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private PlayerController playerController;
 
+    [SerializeField]
+    private HighScoreTracker highScoreTracker;
+
     private void Awake()
     {
         GameController.Singleton = this;
@@ -25,7 +28,11 @@ public class GameController : MonoBehaviour
     public void EndGame()
     {
         PauseController.PauseGame(true);
-        this.ui.DisplayEndScreen(this.scorer.GetScore());
+        int score = this.scorer.GetScore();
+        int highScore = this.highScoreTracker.UpdateHighScore(score);
+        bool newHeigh = highScore == score;
+
+        this.ui.DisplayEndScreen(score, highScore, newHeigh);
     }
 
     //Called by button
