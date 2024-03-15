@@ -6,10 +6,16 @@ using UnityEngine;
 public class UIController : MonoBehaviour
 {
     [SerializeField]
-    private HealthDisplay healthDisplay;
-
+    private BarDisplay healthDisplay;
+    
     [SerializeField]
     private Hitable playerHitable;
+
+    [SerializeField]
+    private BarDisplay ammoDisplay;
+
+    [SerializeField]
+    private Ammo playerAmmo;
 
     [SerializeField]
     private EndScreen endScreen;
@@ -23,6 +29,7 @@ public class UIController : MonoBehaviour
     private void Update()
     {
         this.healthDisplay.Set(this.playerHitable.GetCurrentHP(), this.playerHitable.GetMaxHP());
+        this.ammoDisplay.Set(this.playerAmmo.GetCurrentAmmo(), this.playerAmmo.GetMaxAmmo());
         this.scoreDisplay.Set(this.scorer.GetScore());
     }
 

@@ -69,7 +69,6 @@ public class PlayerController : MonoBehaviour
         bool shooting = Input.GetMouseButtonDown(0);
         if (shooting)
         {
-            this.gunAnimator.SetTrigger("shoot");
             this.gun.Shoot();
         }
 

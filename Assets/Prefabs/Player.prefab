@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 827823275447668707}
   - component: {fileID: 326724908094711797}
   - component: {fileID: 5041988464943285824}
+  - component: {fileID: 3290889365456707657}
   m_Layer: 0
-  m_Name: GunSprite
+  m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,7 +118,22 @@ MonoBehaviour:
   bulletSpeed: 40
   bulletDamage: 10
   defaultDir: {x: -1, y: 0, z: 0}
-  gunshotSound: {fileID: 0}
+  gunshotSound: {fileID: 8300000, guid: 4272bcb8f63b9124b86179622da92afd, type: 3}
+  ammo: {fileID: 3290889365456707657}
+  animator: {fileID: 9142110683417848011}
+--- !u!114 &3290889365456707657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2930337127502727684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e49f900f28ba244ebfd55f9b4b6039a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAmmo: 20
 --- !u!1 &3733956633861776471
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,6 +219,8 @@ MonoBehaviour:
   forPlayer: {fileID: 3106839914405119641}
   EnemyDespawnDelay: 0
   addsToScoreOnDeath: 0
+  dropsOnDeath: {fileID: 0}
+  dropRate: 0
 --- !u!114 &8075854494640015861
 MonoBehaviour:
   m_ObjectHideFlags: 0
