@@ -20,14 +20,9 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private HighScoreTracker highScoreTracker;
 
-    [SerializeField]
-    private Texture2D cursorTexture;
-
     private void Awake()
     {
         GameController.Singleton = this;
-        Vector2 cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
-        Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.Auto);
     }
 
     public void EndGame()

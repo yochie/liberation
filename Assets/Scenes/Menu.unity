@@ -1272,6 +1272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialWindow: {fileID: 2001164338}
+  cursorTexture: {fileID: 2800000, guid: d8f8240ed1ad8834689c43e1be934d32, type: 3}
 --- !u!4 &1656651659
 Transform:
   m_ObjectHideFlags: 0
