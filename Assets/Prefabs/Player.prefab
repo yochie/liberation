@@ -213,10 +213,10 @@ MonoBehaviour:
   shakeAmplitude: 10
   shakeFrequency: 1
   spriteFlasher: {fileID: 6909557829062908164}
+  isPlayer: 1
+  playerController: {fileID: 3106839914405119641}
   knockbacker: {fileID: 0}
   kbDurationSeconds: 0
-  isPlayer: 1
-  forPlayer: {fileID: 3106839914405119641}
   EnemyDespawnDelay: 0
   addsToScoreOnDeath: 0
   dropsOnDeath: {fileID: 0}
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 366203090232933102}
   durationSeconds: 0.5
-  flashColor: {r: 1, g: 0, b: 0, a: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 0.78431374}
   curve:
     serializedVersion: 2
     m_Curve:

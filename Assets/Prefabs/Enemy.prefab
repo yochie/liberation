@@ -300,7 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: -1023503338212714525}
   durationSeconds: 0.5
-  flashColor: {r: 1, g: 0, b: 0, a: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 0.78431374}
   curve:
     serializedVersion: 2
     m_Curve:

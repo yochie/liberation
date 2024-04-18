@@ -30850,6 +30850,7 @@ MonoBehaviour:
   scorer: {fileID: 1284700181}
   playerController: {fileID: 2061259273}
   highScoreTracker: {fileID: 1284700182}
+  cursorTexture: {fileID: 2800000, guid: d8f8240ed1ad8834689c43e1be934d32, type: 3}
 --- !u!4 &1284700180
 Transform:
   m_ObjectHideFlags: 0

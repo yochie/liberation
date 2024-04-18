@@ -27,17 +27,20 @@ public class Hitable : MonoBehaviour
     [SerializeField]
     private SpriteFlasher spriteFlasher;
 
-    [SerializeField]
-    private Knockbacker knockbacker;
-
-    [SerializeField]
-    private float kbDurationSeconds;
+    [Header("For Player")]
 
     [SerializeField]
     private bool isPlayer;
 
     [SerializeField]
-    private PlayerController forPlayer;
+    private PlayerController playerController;
+
+    [Header("For Enemies")]
+    [SerializeField]
+    private Knockbacker knockbacker;
+
+    [SerializeField]
+    private float kbDurationSeconds;
 
     [SerializeField]
     private float EnemyDespawnDelay;
@@ -118,9 +121,9 @@ public class Hitable : MonoBehaviour
             }
         }
 
-        if (this.isPlayer && this.forPlayer != null)
+        if (this.isPlayer && this.playerController != null)
         {
-            this.forPlayer.Die();
+            this.playerController.Die();
         }
         else
         {
