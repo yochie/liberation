@@ -17,6 +17,9 @@ public class BulletShooter : MonoBehaviour
     private Vector3 defaultDir;
 
     [SerializeField]
+    private Transform bulletSpawnPoint;
+
+    [SerializeField]
     private AudioClip gunshotSound;
 
     [SerializeField]
@@ -34,7 +37,7 @@ public class BulletShooter : MonoBehaviour
             this.ammo.Consume();
         }
 
-        Bullet bullet = Instantiate(this.bulletPrefab, this.transform.position, this.transform.rotation);
+        Bullet bullet = Instantiate(this.bulletPrefab, this.bulletSpawnPoint.position, this.transform.rotation);
         Vector3 dir = bullet.transform.rotation * this.defaultDir;
         Vector3 velocity = dir * this.bulletSpeed;
         bullet.SetVelocity(velocity);
