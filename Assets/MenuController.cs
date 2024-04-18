@@ -13,7 +13,7 @@ public class MenuController : MonoBehaviour
     private void Awake()
     {
         Vector2 cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
-        Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.Auto);
+        Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.ForceSoftware);
     }
 
     public void Play()
